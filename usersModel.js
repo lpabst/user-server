@@ -8,7 +8,9 @@ module.exports = {
         'Clayton',
         'Justin',
         'Bryan',
-        'Lucas'
+        'Lucas', 
+        'Wynter',
+        'Luna Luna bo buna banana fana fo funa, me my mo muna, Luna'
     ]
 
 }
