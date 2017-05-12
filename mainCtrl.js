@@ -1,4 +1,5 @@
 const usersModel = require('./usersModel.js');
+const config = require('./config');
 
 
 
@@ -17,6 +18,14 @@ module.exports = {
         }
     },
 
+    getSecrets: function(req, res, next){
+       if (req.session.admin){
+           res.status(200).json(config.secret);
+       }else{
+           res.status(403).send('unauthorized');
+       }
+    },
+
     addUser: function(req, res, next){
         if (req.body.newUser){
         let newUser = req.body.newUser;
@@ -25,6 +34,18 @@ module.exports = {
         }else{
             return res.status(400).send('Need "newUser" value filled in');
         }
+    },
+
+    login: function(req, res, next){
+        if (req.body.name == 'claytons username' 
+        && req.body.password == 'claytons password'){
+            req.session.admin = true;
+            return res.status(200).send('authorized login');
+        }else{
+            req.session.admin = false;
+            return res.status(403).send('unauthorized');
+        }
+        
     },
 
     deleteUserByName: function(req, res, next){

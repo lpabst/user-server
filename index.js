@@ -17,8 +17,10 @@ app.use(session({
 
 app.get('/users', mainCtrl.getAllUsers);
 app.get('/users/:name', mainCtrl.getUserByName);
+app.get('/secrets', mainCtrl.getSecrets);
 
 app.post('/users', mainCtrl.addUser);
+app.post('/auth/login', mainCtrl.login);
 
 app.delete('/users/:name', mainCtrl.deleteUserByName);
 
